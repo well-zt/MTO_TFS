@@ -38,7 +38,7 @@ TFS分别代表三个物理场，即T=thermal;   F=fluid;   S=solid displacement
 5. 终端中输入reconstructPar(数据组装)
 6. 终端中输入paraFoam(后处理看数据)
 
-本算例共有约51万个六面体网格，在我的工作站上(20核并行)大约23秒完成一步优化,预设计算300步后停止(我算到170步左右已经差不多收敛了)。
+本算例共有约51万个六面体网格，在我的工作站上(20核并行)大约20秒完成一步优化,预设计算300步后停止(我算到170步左右已经差不多收敛了)。
 
 ![image](https://github.com/MTopOpt/MTO_TFS/blob/main/MTO_TFS/%E4%BE%A7%E8%A7%86%E5%9B%BE_iter%3D170.png)  
 ![image](https://github.com/MTopOpt/MTO_TFS/blob/main/MTO_TFS/%E4%BF%AF%E8%A7%86%E5%9B%BE_iter%3D170.png)  
