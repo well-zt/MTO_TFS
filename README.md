@@ -41,9 +41,11 @@ TFS分别代表三个物理场，即T=thermal;   F=fluid;   S=solid displacement
 本算例共有约51万个六面体网格，在我的工作站上(20核并行)大约23秒完成一步优化,预设计算300步后停止(我算到170步左右已经差不多收敛了)。
 
 ![image](https://github.com/MTopOpt/MTO_TFS/blob/main/MTO_TFS/%E4%BE%A7%E8%A7%86%E5%9B%BE_iter%3D170.png)  
+![image](https://github.com/MTopOpt/MTO_TFS/blob/main/MTO_TFS/%E4%BF%AF%E8%A7%86%E5%9B%BE_iter%3D170.png)  
+![image](https://github.com/MTopOpt/MTO_TFS/blob/main/MTO_TFS/%E5%8D%8A%E7%BB%93%E6%9E%84_iter%3D170.png)  
 
 最后
 -----------
 上述流程走完你应该能看到一个结果，如果你对程序有疑问，可以下载我的博士论文《液冷散热器流道与热源分布拓扑优化研究》，或者邮件找我要。本人非计算机专业出身，写代码能力有限，就是简单用C语言把各个功能组了一遍，如果有大佬看到请轻拍。
 
-于明豪 2021.8.27 yuminghao_dlut@163.com
+于明豪 2021.8.28 yuminghao_dlut@163.com
