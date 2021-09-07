@@ -17,7 +17,7 @@ TFS分别代表三个物理场，即T=thermal;   F=fluid;   S=solid displacement
 (c) **swak4Foam 0.4.3**  
 (d) **openMPI 1.10**
 
-1.运行MTO_TFS时使用op5和op6区别不大，就只是主函数里第26行用 **while (simple.loop()) op5**还是**while (simple.loop(runTime)) op6**.
+1.我采用的是基金会维护的OpenFoam (openfoam.org).运行MTO_TFS时使用op5和op6区别不大，就只是主函数里第26行用 **while (simple.loop()) op5**还是**while (simple.loop(runTime)) op6**.
 
 2.PETSc的作用是给MMA提供框架的，因为Aage大佬发布了基于petsc的并行MMA，所以我修改以后就移植到op里了(修改以后的代码可以从我之前的仓库里MTO中下载).大佬的源码在 https://github.com/topopt/TopOpt_in_PETSc/MMA.cc
 
