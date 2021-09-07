@@ -17,7 +17,7 @@ TFS分别代表三个物理场，即T=thermal;   F=fluid;   S=solid displacement
 (c) **swak4Foam 0.4.3**  
 (d) **openMPI 1.10**
 
-1.我采用的是基金会维护的OpenFoam (openfoam.org).运行MTO_TFS时使用op5和op6区别不大，就只是主函数里第26行用 **while (simple.loop()) op5**还是**while (simple.loop(runTime)) op6**.
+1.我采用的是基金会维护的OpenFoam (openfoam.org). 运行MTO_TFS时使用op5和op6区别不大，就只是主函数里第26行用 **while (simple.loop()) op5**还是**while (simple.loop(runTime)) op6**.
 
 2.PETSc的作用是给MMA提供框架的，因为Aage大佬发布了基于petsc的并行MMA，所以我修改以后就移植到op里了(修改以后的代码可以从我之前的仓库里MTO中下载).大佬的源码在 https://github.com/topopt/TopOpt_in_PETSc/MMA.cc
 
@@ -26,6 +26,8 @@ TFS分别代表三个物理场，即T=thermal;   F=fluid;   S=solid displacement
 3.swak4Foam是用来加第三类边界条件的。你可以看看app文件夹下伴随温度场Ta中的groovyBC，那就是swak4Foam的功能。
 
 4.有些小伙伴下载高版本ubuntu后openMPI版本也会很高，导致编译时找不到mpi.h。解决办法要么下载ubuntu14，要么使用openMPI 1.10版本。
+
+即使上述都安装正确，编译程序时仍会有一个报错，错误信息大概是说pow()函数定义冲突。你需要：将petsc文件中pow()改为::pow(). 具体是哪个文件以及哪一行编译器会抛出。
 
 运行
 -----------
