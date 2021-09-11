@@ -19,13 +19,19 @@ TFS分别代表三个物理场，即T=thermal;   F=fluid;   S=solid displacement
 
 1.我采用的是基金会维护的OpenFoam (openfoam.org). 运行MTO_TFS时使用op5和op6区别不大，就只是主函数里第26行用 **while (simple.loop()) op5**还是**while (simple.loop(runTime)) op6**.
 
-2.PETSc的作用是给MMA提供框架的，因为Aage大佬发布了基于petsc的并行MMA，所以我修改以后就移植到op里了(修改以后的代码可以从我之前的仓库里MTO中下载).大佬的源码在 https://github.com/topopt/TopOpt_in_PETSc/MMA.cc
+2.Petsc正确安装后，需要修改bashrc，具体命令是sudo gedit ~/.barhrc  ,并将下面代码粘贴进去：
 
-使用时需要把MMA.h和MMA.c编译成动态库，并且把该库放到**FOAM_USER_LIBBIN**.编译代码大概长这样**(注意要把路径换成你自己电脑的)**：  mpic++ -shared -fPIC *.c -I/home/gentai/PETSc/petsc-3.11.0/include  -I/home/gentai/PETSc/petsc-3.11.0/include/mpiuni -I/home/gentai/PETSc/petsc-3.11.0/arch-linux-intel/include -o libMMA_yu.so  
+export PETSC_DIR=/home/gentai/petsc
+export PETSC_ARCH=arch-linux2-c-debug
+export LD_LIBRARY_PATH=$PETSC_DIR/$PETSC_ARCH/lib:$LD_LIBRARY_PATH 
+
+PETSc的作用是给MMA提供框架的，因为Aage大佬发布了基于petsc的并行MMA，所以我修改以后就移植到op里了(修改以后的代码可以从我之前的仓库里MTO中下载).大佬的源码在 https://github.com/topopt/TopOpt_in_PETSc/MMA.cc
+
+使用时需要把MMA.h和MMA.c编译成动态库，并且把该库放到**FOAM_USER_LIBBIN**.编译代码大概长这样**(注意要把路径换成你自己电脑的！！)**：  mpic++ -shared -fPIC *.c -I/home/gentai/PETSc/petsc-3.11.0/include  -I/home/gentai/PETSc/petsc-3.11.0/include/mpiuni -I/home/gentai/PETSc/petsc-3.11.0/arch-linux-intel/include -o libMMA_yu.so  
 
 3.swak4Foam是用来加第三类边界条件的。你可以看看app文件夹下伴随温度场Ta中的groovyBC，那就是swak4Foam的功能。
 
-4.有些小伙伴下载高版本ubuntu后openMPI版本也会很高，导致编译时找不到mpi.h。解决办法要么下载ubuntu14，要么使用openMPI 1.10版本。
+4.有些小伙伴下载高版本ubuntu后openMPI版本也会很高，导致编译时找不到mpi.h。解决办法要么下载ubuntu16，要么使用openMPI 1.10版本。然后在openfoam安装目录下(一般是 /opt/openfoam6/wmake/rules)指定编译器，一般是采用linux64gcc，所以进入linux64gcc文件夹，sudo gedit c ，将第五行gcc 改为mpicc；同理sudo gedit c++，将第九行 g++改为mpic++
 
 即使上述都安装正确，编译程序时仍会有一个报错，错误信息大概是说pow()函数定义冲突。你需要：将petsc文件中pow()改为::pow(). 具体是哪个文件以及哪一行编译器会抛出。
 
