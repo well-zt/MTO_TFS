@@ -59,4 +59,6 @@ PETSc的作用是给MMA提供框架的，因为Aage大佬发布了基于petsc的
 -----------
 上述流程走完你应该能看到一个结果，如果你对程序有疑问，可以下载我的博士论文《液冷散热器流道与热源分布拓扑优化研究》，或者邮件找我要。本人非计算机专业出身，写代码能力有限，就是简单用C语言把各个功能组了一遍，如果有大佬看到请轻拍。
 
+如果本程序对你有帮助，请引用文章： Yu M ,  Ruan S ,  Gu J , et al. Three-dimensional topology optimization of thermal-fluid-structural problems for cooling system design[J]. Structural and Multidisciplinary Optimization, 2020, 62(6):1-20.
+
 于明豪 2021.8.28 yuminghao_dlut@163.com
